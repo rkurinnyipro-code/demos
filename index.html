@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch an AI sell for your business · Result Labs</title>
+<meta name="description" content="Tell us what you sell. An AI agent answers your lead in seconds, qualifies it and books the call. Then you play the customer.">
+<meta property="og:title" content="Watch an AI sell for YOUR business in 60 seconds">
+<meta property="og:description" content="Build a live AI lead-capture agent for your business, then play the customer and see it work.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%2710%27 fill=%27%232ee07a%27/%3E%3Cpath d=%27M9 28l8.5-8.5 5 5L31 15M24.5 15H31v6.5%27 fill=%27none%27 stroke=%27%2304130a%27 stroke-width=%273.3%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070b09;--panel:#0f1512;--panel2:#151d19;--line:rgba(255,255,255,.08);--text:#e8efe9;--mute:#8a9a90;--green:#2ee07a;--amber:#f5a524;--red:#ff5d5d;--blue:#0a84ff;--brand:#2563eb}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(1100px 600px at 80% -10%,rgba(46,224,122,.10),transparent 60%),radial-gradient(800px 500px at -5% 110%,rgba(46,224,122,.05),transparent 60%),var(--bg);background-attachment:fixed}
+button,input,textarea{font-family:inherit}
+.screen{display:none}.screen.on{display:block}
+.logo-mark{width:38px;height:38px;flex:none}
+.brandrow{display:flex;align-items:center;gap:11px}
+.brandrow b{font-size:17px;font-weight:800;letter-spacing:-.01em;display:block}
+.brandrow small{font-size:12px;color:var(--mute)}
+
+/* ---------- intro ---------- */
+.intro{min-height:100vh;max-width:1180px;margin:0 auto;padding:28px 28px 40px;display:flex;flex-direction:column}
+.introgrid{flex:1;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding-top:20px}
+.kick{font-size:12.5px;letter-spacing:.2em;color:var(--green);font-weight:700;text-transform:uppercase}
+.intro h1{text-wrap:balance;font-size:58px;line-height:1.02;letter-spacing:-.04em;font-weight:800;margin:16px 0 18px}
+.intro h1 span{color:var(--green)}
+.intro .lead{font-size:19px;line-height:1.5;color:#c3d1c8;max-width:540px}
+.how{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.how div{display:flex;gap:12px;align-items:center;font-size:15px;color:#d5e0d9}
+.how i{font-style:normal;width:28px;height:28px;border-radius:50%;background:rgba(46,224,122,.14);color:var(--green);display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.fcard h2{font-size:21px;letter-spacing:-.02em;margin-bottom:4px}
+.fcard p.s{font-size:13.5px;color:var(--mute);margin-bottom:18px}
+.fl{display:block;font-size:12.5px;font-weight:600;color:#b9c7be;margin-bottom:14px}
+.fl input{display:block;width:100%;margin-top:6px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0a0f0c;color:var(--text);padding:0 13px;font-size:15px;outline:none;transition:.2s}
+.fl input:focus{border-color:rgba(46,224,122,.7);box-shadow:0 0 0 3px rgba(46,224,122,.15)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cta{width:100%;height:52px;border:0;border-radius:12px;background:var(--green);color:#04130a;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 10px 30px rgba(46,224,122,.25);transition:.15s}
+.cta:hover{filter:brightness(1.05)}.cta:disabled{opacity:.6;cursor:default}
+.fine{font-size:11.5px;color:#66756c;margin-top:12px;line-height:1.5}
+.err{color:#ff8f8f;font-size:13px;margin-top:10px;min-height:1px}
+
+/* ---------- building ---------- */
+.building{min-height:100vh;display:grid;place-items:center;padding:24px}
+.bbox{width:min(520px,100%);text-align:center}
+.spinner{width:56px;height:56px;border-radius:50%;border:4px solid rgba(46,224,122,.15);border-top-color:var(--green);margin:0 auto 26px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bbox h2{font-size:30px;letter-spacing:-.03em;margin-bottom:22px}
+.bsteps{text-align:left;display:flex;flex-direction:column;gap:10px}
+.bs{display:flex;gap:12px;align-items:center;padding:13px 16px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--mute);font-weight:600;font-size:14.5px;transition:.4s}
+.bs i{font-style:normal;width:22px;text-align:center}
+.bs.on{color:var(--text);border-color:rgba(46,224,122,.45)}
+.bs.done{color:#cfe9d9}
+
+/* ---------- app ---------- */
+.ahead{display:flex;justify-content:space-between;align-items:center;padding:14px 26px;gap:16px}
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.chip{height:36px;padding:0 14px;border-radius:999px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;transition:.4s}
+.chip span{color:var(--mute);font-weight:500}
+.chip.done{border-color:rgba(46,224,122,.6);background:rgba(46,224,122,.1)}.chip.done b{color:var(--green)}
+.chip.mock{border-color:rgba(245,165,36,.5);color:var(--amber)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none;background:var(--green)}
+.pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,224,122,.6)}100%{box-shadow:0 0 0 10px rgba(46,224,122,0)}}
+.guide{margin:0 26px 14px;padding:12px 16px;border-radius:12px;background:rgba(46,224,122,.08);border:1px solid rgba(46,224,122,.3);font-size:14.5px;color:#d9f7e5;display:flex;gap:10px;align-items:center}
+.guide b{color:#fff}
+.grid{display:grid;grid-template-columns:minmax(330px,430px) 350px minmax(0,1fr);gap:22px;padding:0 26px 26px;height:calc(100vh - 128px);min-height:640px}
+.panel{min-height:0;display:flex;flex-direction:column}
+
+/* website mock */
+.web{background:#fff;border-radius:16px;overflow:hidden;color:#1b1d22;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.chrome{height:38px;background:#ecebe7;display:flex;align-items:center;gap:7px;padding:0 14px;flex:none}
+.chrome i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.chrome i:nth-child(2){background:#febc2e}.chrome i:nth-child(3){background:#28c840}
+.url{margin-left:10px;flex:1;height:24px;border-radius:7px;background:#fff;font-size:12px;color:#6b665f;display:flex;align-items:center;padding:0 10px;overflow:hidden;white-space:nowrap}
+.site{padding:16px 22px;flex:1;display:flex;flex-direction:column;overflow:auto}
+.snav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.slogo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-.01em;min-width:0}
+.slogo span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slm{width:28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800;flex:none}
+.slinks{display:flex;gap:14px;font-size:12px;color:#6c7079;white-space:nowrap}.slinks .act{color:var(--brand);font-weight:700}
+.shero{margin:14px 0 14px;padding:16px 18px;border-radius:12px;background:color-mix(in srgb,var(--brand) 9%,#fff)}
+.shero .k{font-size:10.5px;letter-spacing:.12em;font-weight:800;color:var(--brand);text-transform:uppercase}
+.shero h3{font-size:22px;letter-spacing:-.02em;margin:4px 0 3px;line-height:1.15}
+.shero p{font-size:12.8px;color:#5d636d}
+.svcs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.svcs span{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;background:#fff;border:1px solid color-mix(in srgb,var(--brand) 25%,#fff);color:#3b404a}
+.sform label{display:block;font-size:11.5px;font-weight:600;color:#5d636d;margin-bottom:10px}
+.sform input,.sform textarea{display:block;width:100%;margin-top:5px;border:1.5px solid #e2e4e8;border-radius:9px;padding:9px 11px;font-size:14px;color:#1b1d22;background:#fbfbfc;outline:none;transition:.2s;resize:none}
+.sform input{height:38px}
+.sform textarea{height:76px;line-height:1.4}
+.sform input:focus,.sform textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 18%,transparent);background:#fff}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.example{background:none;border:0;color:var(--brand);font-weight:700;font-size:12px;cursor:pointer;padding:0;margin:-4px 0 10px}
+.sbtn{width:100%;height:44px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;transition:.15s}
+.sbtn:disabled{background:#2f9e5b;cursor:default}
+.sok{margin-top:10px;font-size:13px;color:#2f9e5b;font-weight:600;display:none}
+.sok.show{display:block}
+
+/* phone */
+.phonewrap{align-items:center}
+.phone{width:100%;max-width:340px;flex:1;max-height:720px;border-radius:50px;background:#000;border:10px solid #1b1e1d;box-shadow:0 0 0 1.5px #3a3f3d,0 30px 80px rgba(0,0,0,.55);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:90px;height:26px;border-radius:20px;background:#000;z-index:3}
+.sbar{height:44px;display:flex;justify-content:space-between;align-items:center;padding:4px 24px 0 30px;font-size:14px;font-weight:600;flex:none}
+.thead{text-align:center;padding:4px 0 10px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(28,28,30,.65);flex:none}
+.av{width:42px;height:42px;border-radius:50%;margin:0 auto 4px;background:var(--brand);display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff}
+.tname{font-size:13px;font-weight:600;padding:0 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tsub{font-size:10.5px;color:#8e8e93;margin-top:1px}
+.mstat{display:none}
+.msgs{flex:1;overflow-y:auto;padding:14px 12px 6px;display:flex;flex-direction:column;gap:8px;scrollbar-width:none}
+.msgs::-webkit-scrollbar{display:none}
+.empty{margin:auto;color:#5d6264;font-size:12.5px;text-align:center;padding:0 20px;line-height:1.5}
+.b{max-width:84%;padding:9px 13px;border-radius:18px;font-size:14px;line-height:1.38;opacity:0;transform:translateY(8px) scale(.98);transition:.35s cubic-bezier(.2,.8,.2,1);flex:none;white-space:pre-wrap;word-wrap:break-word}
+.b.in{opacity:1;transform:none}
+.b.left{align-self:flex-start;background:#26262a;border-bottom-left-radius:6px}
+.b.right{align-self:flex-end;background:var(--blue);border-bottom-right-radius:6px}
+.b.sys{align-self:center;background:rgba(255,93,93,.12);color:#ffb3b3;font-size:12.5px;border-radius:10px}
+.stamp{align-self:center;font-size:10.5px;color:#76797c;margin:2px 0}
+.typing{display:flex;gap:4px;padding:13px 14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:#8e8e93;animation:bop 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bop{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+.qr{display:flex;gap:6px;overflow-x:auto;padding:6px 12px 0;flex:none;scrollbar-width:none}
+.qr::-webkit-scrollbar{display:none}
+.qr:empty{display:none}
+.qr button{flex:none;height:30px;padding:0 12px;border-radius:15px;border:1px solid rgba(10,132,255,.55);background:rgba(10,132,255,.12);color:#8cc2ff;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;animation:qin .35s ease both}
+.qr button:hover{background:rgba(10,132,255,.25)}
+@keyframes qin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.rcpt{align-self:flex-end;font-size:10.5px;color:#76797c;margin:-4px 6px 0;flex:none}
+.compose{display:flex;gap:8px;align-items:center;padding:8px 12px 18px;flex:none}
+.compose input{flex:1;min-width:0;height:36px;border:1px solid #3a3a3c;border-radius:18px;padding:0 14px;font-size:14px;background:transparent;color:#fff;outline:none}
+.compose input:focus{border-color:#5a5a5e}
+.compose input:disabled{opacity:.5}
+.send{width:34px;height:34px;border-radius:50%;border:0;background:var(--blue);color:#fff;font-weight:800;font-size:16px;cursor:pointer;flex:none}
+.send:disabled{background:#3a3a3c;cursor:default}
+.left-count{font-size:11px;color:#6e7275;text-align:center;padding-bottom:10px;margin-top:-10px;flex:none}
+.plabel{margin-top:12px;font-size:11px;color:var(--mute);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* dashboard */
+.dash{gap:14px;position:relative}
+.dhead{display:flex;justify-content:space-between;align-items:center;flex:none;gap:10px}
+.dtitle{font-size:20px;font-weight:800;letter-spacing:-.02em}.dsub{font-size:12.5px;color:var(--mute);margin-top:2px}
+.agent{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;background:rgba(46,224,122,.08);border:1px solid rgba(46,224,122,.3);color:#c4f5d7;white-space:nowrap}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.ctitle{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--mute);margin-bottom:9px;display:flex;justify-content:space-between;gap:8px}
+.drow{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;flex:none}
+.drow>*,.cols>div{min-width:0}.card{min-width:0;overflow:hidden}
+.q{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.06);font-size:13.5px}
+.q:last-child{border-bottom:0}
+.q .k{width:88px;color:var(--mute);font-size:12.5px;flex:none}
+.q .v{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#55635a;transition:color .3s}
+.q.has .v{color:var(--text)}
+.q .c{color:var(--green);font-weight:800;opacity:0;transition:.3s}.q.has .c{opacity:1}
+.q.flash{animation:flash 1s}
+@keyframes flash{0%{background:rgba(46,224,122,.18)}100%{background:transparent}}
+.loc{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;font-size:13.5px;margin-bottom:6px;background:rgba(255,255,255,.025);border:1px solid transparent;transition:.4s}
+.loc .pin{width:8px;height:8px;border-radius:50%;background:#3b4a41;flex:none;transition:.4s}
+.loc .ln{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.loc .tg{font-size:10px;font-weight:800;color:#04130a;background:var(--green);padding:2px 7px;border-radius:5px;display:none;letter-spacing:.04em}
+.loc.win{border-color:rgba(46,224,122,.6);background:rgba(46,224,122,.1)}
+.loc.win .pin{background:var(--green);box-shadow:0 0 0 4px rgba(46,224,122,.2)}
+.loc.win .tg{display:inline-block}
+.routed .loc:not(.win){opacity:.42}
+.pipe{flex:none}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ch{font-size:12.5px;font-weight:700;color:#cbd5ce;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.ch .cd{width:7px;height:7px;border-radius:50%}
+.slot{min-height:76px;border-radius:10px;border:1px dashed rgba(255,255,255,.08)}
+.lc{background:var(--panel2);border:1px solid rgba(46,224,122,.55);border-radius:10px;padding:9px 11px;font-size:12px;box-shadow:0 0 0 3px rgba(46,224,122,.1),0 10px 30px rgba(0,0,0,.4);animation:pop .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.03);opacity:1}100%{transform:none}}
+.lt{font-weight:700;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lm{color:var(--mute);margin:2px 0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lf{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.val{font-weight:700;color:#d6f5e2}
+.tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.07);color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag.hot{background:rgba(245,165,36,.15);color:var(--amber)}
+.tag.gr{background:rgba(46,224,122,.15);color:var(--green)}
+.logc{flex:1;min-height:110px;overflow:hidden}
+.le{display:flex;gap:10px;font-size:12.8px;padding:4px 0;opacity:0;transform:translateY(-5px);transition:.35s}
+.le.in{opacity:1;transform:none}
+.le .t{color:var(--mute);font-variant-numeric:tabular-nums;width:64px;flex:none}
+.le .x{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lwait{color:#55635a;font-size:13px;padding-top:4px}
+.toast{position:absolute;right:0;top:50px;width:min(380px,100%);background:#15201a;border:1px solid rgba(46,224,122,.55);border-radius:14px;padding:13px 15px;box-shadow:0 22px 60px rgba(0,0,0,.65);transform:translateX(40px);opacity:0;pointer-events:none;transition:.55s cubic-bezier(.2,.8,.2,1);z-index:5}
+.toast.show{transform:none;opacity:1;pointer-events:auto}
+.toast .th{font-size:11px;font-weight:800;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.toast .tb{font-size:13px;line-height:1.5;color:#dfeae3}
+.toast .tb b{color:#fff}
+.toast .tx{position:absolute;top:8px;right:10px;background:none;border:0;color:var(--mute);cursor:pointer;font-size:15px}
+
+/* end overlay */
+.ov{position:fixed;inset:0;display:flex;background:rgba(4,8,6,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .6s;z-index:50;padding:20px;overflow:auto}
+.ov.show{opacity:1;pointer-events:auto}
+.ebox{width:min(1040px,100%);text-align:center;margin:auto}
+.roi{background:var(--panel);border:1px solid rgba(46,224,122,.3);border-radius:16px;padding:18px 20px;margin:0 auto 22px;max-width:760px;text-align:left}
+.roih{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.roirow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.roirow label{font-size:12px;color:#a9b8ae;font-weight:600}
+.roirow input{display:block;width:100%;margin-top:6px;height:40px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:#0a0f0c;color:var(--text);padding:0 12px;font-size:16px;font-weight:700;outline:none}
+.roirow input:focus{border-color:rgba(46,224,122,.7)}
+.roiout{margin-top:14px;font-size:18px;color:#d3ddd6}
+.roiout b{color:var(--green);font-size:24px}
+.roinote{font-size:11.5px;color:#66756c;margin-top:4px}
+.ebox h2{text-wrap:balance;font-size:46px;line-height:1.08;letter-spacing:-.035em;margin:16px auto 0;max-width:900px;font-weight:800}
+.ebox h2 span{color:var(--green)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px 0 26px}
+.st{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 14px}
+.st b{display:block;font-size:36px;color:var(--green);letter-spacing:-.03em;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st span{font-size:13.5px;color:#a9b8ae}
+.pitch{font-size:18px;color:#d3ddd6;line-height:1.5}
+.pitch b{color:#fff}
+.ebtns{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.ebtns a,.ebtns button{height:52px;padding:0 26px;border-radius:12px;font-weight:800;font-size:16px;display:inline-flex;align-items:center;text-decoration:none;cursor:pointer;border:0}
+.ebtns a{background:var(--green);color:#04130a;box-shadow:0 10px 30px rgba(46,224,122,.3)}
+.ebtns button{background:rgba(255,255,255,.08);color:var(--text)}
+
+/* mobile tabs */
+.tabs{display:none}
+
+@media (max-width: 1100px){
+  .grid{grid-template-columns:minmax(300px,400px) 330px minmax(0,1fr);gap:16px;padding:0 16px 20px}
+  .ahead{padding:12px 16px}.guide{margin:0 16px 12px}
+}
+@media (max-width: 980px){
+  .introgrid{grid-template-columns:1fr;gap:28px;padding-top:12px}
+  .intro{padding:20px 18px 34px}
+  .intro h1{font-size:40px}
+  .intro .lead{font-size:16.5px}
+  .how{margin-top:20px}
+  .ahead .chips .chip.hide-m{display:none}
+  .ahead{padding:12px 14px}
+  .guide{margin:0 12px 10px;font-size:13.5px;padding:10px 12px}
+  #s-app.on{display:flex;flex-direction:column;height:100vh;height:100dvh}
+  .ahead,.guide{flex:none}
+  .grid{display:flex;flex:1;min-height:0;height:auto;padding:0 12px calc(72px + env(safe-area-inset-bottom))}
+  .panel{display:none;flex:1;min-height:0;width:100%}
+  .panel.act{display:flex}
+  .phone{max-width:none;max-height:none;border-radius:18px;border:1px solid var(--line);box-shadow:none}
+  .island,.sbar,.plabel{display:none}
+  .mstat{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);background:#0b100d;font-size:11.5px;font-weight:700;flex:none}
+  .mstat span{padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--mute)}
+  .mstat span.g{background:rgba(46,224,122,.14);color:var(--green)}
+  .mstat span.h{background:rgba(245,165,36,.15);color:var(--amber)}
+  .dash{overflow:auto}
+  .logc{flex:none}
+  .drow{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .slot{min-height:0;border:0}
+  .slot:empty{display:none}
+  .toast{position:fixed;top:12px;left:12px;right:12px;width:auto;z-index:40}
+  .tabs{display:flex;position:fixed;left:0;right:0;bottom:0;background:rgba(10,15,12,.96);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px;z-index:30}
+  .tabs button{flex:1;height:44px;border-radius:10px;border:0;background:transparent;color:var(--mute);font-weight:700;font-size:13px;position:relative;cursor:pointer}
+  .tabs button.on{background:rgba(46,224,122,.12);color:var(--green)}
+  .tabs button .bd{position:absolute;top:8px;right:18%;width:8px;height:8px;border-radius:50%;background:var(--amber);display:none}
+  .tabs button.ping .bd{display:block}
+  .ebox h2{font-size:30px}
+  .stats{grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 18px}
+  .st b{font-size:28px}
+  .pitch{font-size:16px}
+  .roirow{grid-template-columns:1fr}
+  .roiout{font-size:16px}.roiout b{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="rl" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#2ee07a"/><path d="M9 28l8.5-8.5 5 5L31 15" fill="none" stroke="#04130a" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M24.5 15H31v6.5" fill="none" stroke="#04130a" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<!-- ============ INTRO ============ -->
+<section class="screen on" id="s-intro">
+  <div class="intro">
+    <div class="brandrow"><svg class="logo-mark"><use href="#rl"/></svg><div><b id="agencyName">Result Labs</b><small>AI lead capture &amp; conversion</small></div></div>
+    <div class="introgrid">
+      <div>
+        <div class="kick">Live demo · takes 60 seconds</div>
+        <h1>Watch an AI sell for<br><span>your business.</span></h1>
+        <p class="lead">Tell us what you sell. We'll set up an AI agent that answers your leads in seconds, qualifies them and books the call. Then you play the customer and see it in action.</p>
+        <div class="how">
+          <div><i>1</i>Enter your business, and the AI learns it</div>
+          <div><i>2</i>Send an inquiry like a real customer would</div>
+          <div><i>3</i>Text with the AI and watch your CRM fill itself</div>
+        </div>
+      </div>
+      <form class="fcard" id="introForm" novalidate>
+        <h2>Build my AI agent</h2>
+        <p class="s">Free. No signup. Takes 60 seconds.</p>
+        <div class="two">
+          <label class="fl">Your first name<input name="name" autocomplete="given-name" maxlength="60" required></label>
+          <label class="fl">City <span style="color:#66756c;font-weight:500">(optional)</span><input name="city" maxlength="50" placeholder="e.g. Austin, TX"></label>
+        </div>
+        <label class="fl">Business name<input name="business" autocomplete="organization" maxlength="60" placeholder="e.g. Summit Roofing" required></label>
+        <label class="fl">What do you sell?<input name="offer" maxlength="140" placeholder="e.g. roof repairs and replacements for homeowners" required></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="cta" id="introBtn" type="submit">Build my AI agent →</button>
+        <div class="err" id="introErr"></div>
+        <p class="fine">Interactive demo: the conversation runs on a built-in script, and nothing you type is sent anywhere. The live version runs on AI and connects to your website, CRM and calendar.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILDING ============ -->
+<section class="screen" id="s-build">
+  <div class="building"><div class="bbox">
+    <div class="spinner"></div>
+    <h2 id="buildTitle">Building your AI agent…</h2>
+    <div class="bsteps">
+      <div class="bs" data-i="0"><i>○</i>Learning what you sell</div>
+      <div class="bs" data-i="1"><i>○</i>Writing the sales playbook</div>
+      <div class="bs" data-i="2"><i>○</i>Setting up lead routing &amp; CRM</div>
+      <div class="bs" data-i="3"><i>○</i>Branding your demo website</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ APP ============ -->
+<section class="screen" id="s-app">
+  <header class="ahead">
+    <div class="brandrow"><svg class="logo-mark"><use href="#rl"/></svg><div><b class="agencyRef">Result Labs</b><small id="appSub">AI agent demo</small></div></div>
+    <div class="chips">
+      <div class="chip hide-m" id="clockChip">🕒 <b id="clock">—</b></div>
+      <div class="chip hide-m mock" id="mockChip" style="display:none">Preview mode</div>
+      <div class="chip" id="respChip"><span>First response</span><b id="respT">—</b></div>
+    </div>
+  </header>
+  <div class="guide" id="guide">👉 <span id="guideText"></span></div>
+
+  <div class="grid">
+    <!-- website -->
+    <section class="panel web act" id="p-web">
+      <div class="chrome"><i></i><i></i><i></i><div class="url" id="url">🔒 www.yourbusiness.com/contact</div></div>
+      <div class="site">
+        <div class="snav">
+          <div class="slogo"><span class="slm" id="sLetter">B</span><span id="sName">Business</span></div>
+          <div class="slinks"><span>Services</span><span>About</span><span class="act">Contact</span></div>
+        </div>
+        <div class="shero">
+          <div class="k" id="sKick"></div>
+          <h3 id="sTitle"></h3>
+          <p id="sSub"></p>
+          <div class="svcs" id="sSvcs"></div>
+        </div>
+        <form class="sform" id="custForm" novalidate>
+          <div class="srow">
+            <label>Your name<input id="cName" maxlength="60" autocomplete="off" placeholder="e.g. Sarah Mitchell"></label>
+            <label>Mobile<input id="cPhone" maxlength="30" autocomplete="off" placeholder="(555) 010-0148"></label>
+          </div>
+          <label>How can we help?<textarea id="cMsg" maxlength="600"></textarea></label>
+          <button type="button" class="example" id="exBtn">✨ Fill with an example request</button>
+          <button type="submit" class="sbtn" id="cBtn">Send request</button>
+          <div class="sok" id="cOk">✓ Request received. We'll text you shortly.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- phone -->
+    <section class="panel phonewrap" id="p-chat">
+      <div class="phone">
+        <div class="island"></div>
+        <div class="sbar"><span id="ptime">9:41</span><span style="font-size:11.5px">▂▄▆█ 5G</span></div>
+        <div class="thead"><div class="av" id="pLetter">B</div><div class="tname" id="pName">Business</div><div class="tsub">Text Message · SMS</div></div>
+        <div class="mstat" id="mstat"><span>CRM: waiting for lead</span></div>
+        <div class="msgs" id="msgs"><div class="empty" id="msgEmpty">Send a request from the website form.<br>The AI will text you back here.</div></div>
+        <div class="qr" id="qr"></div>
+        <div class="compose"><input id="cin" placeholder="Text Message" maxlength="500" disabled autocomplete="off"><button class="send" id="sendBtn" disabled aria-label="Send">↑</button></div>
+        <div class="left-count" id="leftCount"></div>
+      </div>
+      <div class="plabel">Your phone (you're the customer)</div>
+    </section>
+
+    <!-- dashboard -->
+    <section class="panel dash" id="p-dash">
+      <div class="dhead">
+        <div><div class="dtitle">Lead Command Center</div><div class="dsub" id="dSub">—</div></div>
+        <div class="agent"><i class="dot pulse"></i>AI agent live 24/7</div>
+      </div>
+      <div class="drow">
+        <div class="card"><div class="ctitle">AI qualification <span id="qCount">0/6</span></div><div id="qrows"></div></div>
+        <div class="card"><div class="ctitle">Smart routing</div><div id="locs"></div></div>
+      </div>
+      <div class="card pipe"><div class="ctitle">Pipeline</div>
+        <div class="cols">
+          <div><div class="ch"><i class="cd" style="background:#f5a524"></i>New / engaged</div><div class="slot" id="col-new"></div></div>
+          <div><div class="ch"><i class="cd" style="background:#60a5fa"></i>Qualified</div><div class="slot" id="col-qual"></div></div>
+          <div><div class="ch"><i class="cd" style="background:#2ee07a"></i>Booked</div><div class="slot" id="col-book"></div></div>
+        </div>
+      </div>
+      <div class="card logc"><div class="ctitle">Live activity</div><div id="log"><div class="lwait">Waiting for the first lead…</div></div></div>
+      <div class="toast" id="toast"><button class="tx" id="toastX" aria-label="Close">×</button><div class="th" id="toastH"></div><div class="tb" id="toastB"></div></div>
+    </section>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="web" class="on">Website<i class="bd"></i></button>
+    <button data-tab="chat">Messages<i class="bd"></i></button>
+    <button data-tab="dash">Dashboard<i class="bd"></i></button>
+  </nav>
+</section>
+
+<!-- ============ END ============ -->
+<div class="ov" id="end">
+  <div class="ebox">
+    <div class="kick" id="eKick">Booked on autopilot</div>
+    <h2 id="eTitle"></h2>
+    <div class="stats">
+      <div class="st"><b id="eResp">—</b><span>first response</span></div>
+      <div class="st"><b id="eMsgs">—</b><span>texts handled automatically</span></div>
+      <div class="st"><b id="eFields">—</b><span>lead details captured</span></div>
+      <div class="st"><b id="eVal">—</b><span id="eValL">est. deal value</span></div>
+    </div>
+    <div class="roi">
+      <div class="roih">What's this worth to you?</div>
+      <div class="roirow">
+        <label>Leads per month<input id="rLeads" type="number" min="1" value="30" inputmode="numeric"></label>
+        <label>Extra % that become customers<input id="rPct" type="number" min="1" max="100" value="5" inputmode="numeric"></label>
+        <label>Average deal value ($)<input id="rVal" type="number" min="1" inputmode="numeric"></label>
+      </div>
+      <div class="roiout">≈ <b id="rMonth">$0</b> more per month · <b id="rYear">$0</b> per year</div>
+      <div class="roinote">Your own estimate: change the numbers to match your business.</div>
+    </div>
+    <p class="pitch" id="ePitch"></p>
+    <div class="ebtns">
+      <a id="eCta" href="#" target="_blank" rel="noopener">Book a 15-min call</a>
+      <button id="eKeep">Keep chatting</button>
+      <button id="eRestart">Try another business</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== EDIT THESE FOR YOUR AGENCY ====== */
+const CONFIG = {
+  agency: 'Result Labs',
+  ctaUrl: 'https://calendly.com/YOUR-LINK',   // where "Book a call" goes
+  ctaLabel: 'Book a 15-min call',
+  maxCustomerMsgs: 12,                         // per visitor conversation
+};
+/* ======================================== */
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => [...document.querySelectorAll(s)];
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const isMobile = () => matchMedia('(max-width: 980px)').matches;
+
+const st = { visitor: null, profile: null, lead: null, history: [], crm: {}, submitAt: 0, firstMs: null, busy: false, ended: false, custCount: 0, tab: 'web' };
+
+document.title = `Watch an AI sell for your business · ${CONFIG.agency}`;
+$('#agencyName').textContent = CONFIG.agency;
+$$('.agencyRef').forEach((e) => (e.textContent = CONFIG.agency));
+if (/YOUR-LINK/.test(CONFIG.ctaUrl)) {
+  // No booking link set yet: turn the button into a DM prompt instead of a broken link.
+  const c = $('#eCta'); c.removeAttribute('href'); c.style.cursor = 'default';
+  c.textContent = `DM “AGENT” to ${CONFIG.agency} to get this →`;
+} else {
+  $('#eCta').href = CONFIG.ctaUrl;
+  $('#eCta').textContent = CONFIG.ctaLabel + ' →';
+}
+
+function show(id) { $$('.screen').forEach((s) => s.classList.toggle('on', s.id === id)); scrollTo(0, 0); }
+function timeNow() { return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
+function localTimeStr() { return new Date().toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }); }
+function fmtSec(ms) { return ms < 10000 ? (ms / 1000).toFixed(1) + 's' : Math.round(ms / 1000) + 's'; }
+function money(n) { n = Number(n) || 0; return n > 0 ? '$' + Math.round(n).toLocaleString('en-US') : ''; }
+function reveal(el) { void el.offsetWidth; el.classList.add('in'); }
+setInterval(() => { $('#clock').textContent = timeNow(); $('#ptime').textContent = timeNow().replace(/\s?(AM|PM)/i, ''); }, 1000);
+
+/* ---------- built-in agent (no API) ---------- */
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const INDUSTRIES = [
+  { k: /driving school|auto-?[ée]cole|tutor|academy|lessons?|course|language school|music school/i,
+    services: ['Lessons', 'Packages', 'Exam prep'], value: 1200, unit: 'per package', booking: 'short call', handoff: 'Claire, Admissions', color: '#16a34a',
+    hero: 'Start learning this week.', sizeQ: 'Is this for yourself or for someone else?', budgetQ: 'Are you thinking of a few lessons or a full package?',
+    sample: 'Hi, I would like to start lessons as soon as possible. What packages do you have and how much are they?' },
+  { k: /roof|plumb|hvac|heating|air condition|electric|remodel|renovat|construct|contractor|landscap|painting|painter|floor|solar|window|kitchen|bath|pool|fenc|handyman|pest|gutter|siding|concrete|deck/i,
+    services: ['Free estimates', 'Repairs', 'Full installs'], value: 6500, unit: 'per project', booking: 'free estimate visit', handoff: 'Mike, Project Manager', color: '#ea580c',
+    hero: 'Get a free estimate.', sizeQ: 'How big is the job, roughly? (one room, whole house, 2-story…)', budgetQ: 'Do you have a budget range in mind?',
+    sample: 'Hi, we need some work done at our house and would like a quote. How soon could someone come out?' },
+  { k: /dent|clinic|med ?spa|aesthetic|derma|chiro|physio|therap|doctor|health|vet|botox|laser|orthodon/i,
+    services: ['New patient visits', 'Treatments', 'Consultations'], value: 1500, unit: 'per treatment plan', booking: 'free consultation', handoff: 'Dr. Lee, Clinic Director', color: '#0891b2',
+    hero: 'Book your visit.', sizeQ: 'Is this just for you, or for anyone else in the family too?', budgetQ: 'Will you be using insurance, or paying directly?',
+    sample: 'Hi, I would like to book a first appointment. Do you have availability this week, and what does it cost?' },
+  { k: /\blaw\b|legal|attorney|lawyer|notary|paralegal/i,
+    services: ['Consultations', 'Representation', 'Document review'], value: 4500, unit: 'per case', booking: 'free consultation', handoff: 'Daniel, Senior Attorney', color: '#334155',
+    hero: 'Talk to an attorney today.', sizeQ: 'Could you share a bit more about your situation?', budgetQ: 'Have you worked with a lawyer on this before?',
+    sample: 'Hi, I need legal advice about a situation and would like to speak with someone. How does a first consultation work?' },
+  { k: /real ?estate|realtor|realty|property|properties|mortgage|broker|homes for sale/i,
+    services: ['Buying', 'Selling', 'Free valuations'], value: 9000, unit: 'per transaction', booking: '15-min call', handoff: 'Jenna, Lead Agent', color: '#9333ea',
+    hero: "Let's find your next move.", sizeQ: 'Are you looking to buy, sell, or both?', budgetQ: 'What price range are you thinking?',
+    sample: 'Hi, we are thinking about selling our home in the next few months and want to know what it could be worth.' },
+  { k: /restaurant|cater|food|bakery|cafe|café|sandwich|pizza|\bbar\b|event|wedding|venue|florist|dj\b|photograph/i,
+    services: ['Catering', 'Private events', 'Group orders'], value: 900, unit: 'per event', booking: '10-min call', handoff: 'Marco, Events Manager', color: '#d9622b',
+    hero: 'Make your event easy.', sizeQ: 'How many guests are you expecting?', budgetQ: 'Do you have a budget per person in mind?',
+    sample: 'Hi, we are planning a team lunch for our office and would love a quote. Can you deliver?' },
+  { k: /gym|fitness|coach|training|yoga|pilates|martial|boxing|nutrition|crossfit|wellness/i,
+    services: ['Personal training', 'Group classes', 'Programs'], value: 1800, unit: 'per year', booking: 'free intro session', handoff: 'Alex, Head Coach', color: '#7c3aed',
+    hero: 'Start your transformation.', sizeQ: "What's your main goal right now?", budgetQ: 'What would you like to invest per month?',
+    sample: 'Hi, I want to get back in shape and I am interested in your programs. How does it work and what does it cost?' },
+  { k: /clean|maid|janitor|laundry|moving|movers|junk|pressure wash/i,
+    services: ['Recurring service', 'Deep cleans', 'Move-in / move-out'], value: 350, unit: 'per visit', booking: 'quick quote call', handoff: 'Rosa, Operations Manager', color: '#0d9488',
+    hero: 'A spotless space, on schedule.', sizeQ: 'How big is the place? (bedrooms or square feet)', budgetQ: 'Is this a one-time job or something recurring?',
+    sample: 'Hi, I need a deep clean for my apartment next week. How much would that be?' },
+  { k: /car\b|cars|auto|dealer|mechanic|tire|tyre|detailing|garage|body shop/i,
+    services: ['Sales', 'Service', 'Financing'], value: 2500, unit: 'per sale', booking: 'short call', handoff: 'Tony, Sales Manager', color: '#dc2626',
+    hero: "Let's get you on the road.", sizeQ: 'What vehicle is this for?', budgetQ: 'Do you have a budget or monthly payment in mind?',
+    sample: 'Hi, I am interested in one of your vehicles and want to know if it is still available and about financing.' },
+  { k: /software|saas|agency|marketing|seo|website|web design|\bapp\b|automation|\bai\b|consult|\bit\b|recruit|staffing|accounting|bookkeep|insurance/i,
+    services: ['Strategy call', 'Implementation', 'Ongoing support'], value: 5000, unit: 'per project', booking: '20-min call', handoff: 'Sam, Solutions Lead', color: '#2563eb',
+    hero: "Let's see what we can do for you.", sizeQ: 'How big is your team, roughly?', budgetQ: 'Do you have a budget range for this?',
+    sample: 'Hi, we are looking for help with this for our company and would like to understand pricing and how you work.' },
+];
+const DEFAULT_IND = { services: ['Free consultation', 'Custom quote', 'Ongoing support'], value: 2500, unit: 'per project', booking: '15-min call', handoff: 'Mike, Sales Manager', color: '#2563eb',
+  hero: "Let's get you a quote.", sizeQ: 'Could you tell me a bit more about what you need? Size or scope?', budgetQ: 'Do you have a budget range in mind?',
+  sample: 'Hi, I am interested in your services and would like a quote. How soon could you start?' };
+
+function buildProfile(v) {
+  const ind = INDUSTRIES.find((i) => i.k.test(`${v.offer} ${v.business}`)) || DEFAULT_IND;
+  return {
+    business: v.business, offer: v.offer, city: v.city,
+    agent_name: 'Ava',
+    tagline: v.offer.length > 44 ? v.offer.slice(0, 42).replace(/\s+\S*$/, '') + '…' : v.offer,
+    hero_title: ind.hero,
+    hero_sub: `${v.business} · fast answers, no pressure.`,
+    services: ind.services,
+    sample_inquiry: ind.sample,
+    inquiry_placeholder: 'Tell us what you need…',
+    avg_deal_value: ind.value, deal_unit: ind.unit,
+    booking_type: ind.booking, handoff_name: ind.handoff,
+    locations: v.city ? [`${v.city} · Downtown`, `${v.city} · North`, `${v.city} · South`] : ['Main office', 'Field team'],
+    brand_color: ind.color,
+    chips: CHIPS[ind.hero] || CHIPS["Let's get you a quote."],
+    q: { size_or_scope: ind.sizeQ, budget: ind.budgetQ, timeline: 'When are you hoping to get started?' },
+  };
+}
+
+// Tap-to-reply suggestions per industry (matched by the industry's hero line)
+const CHIPS = {
+  'Start learning this week.': { size: ['For me', 'For my son', 'For my daughter'], budget: ['A few lessons', 'Full package'] },
+  'Get a free estimate.': { size: ['One room', 'Whole house', '2-story home'], budget: ['Under $5k', '$5k–$15k', '$15k+', 'Not sure yet'] },
+  'Book your visit.': { size: ['Just me', 'Me + family'], budget: ['Insurance', 'Paying directly'] },
+  'Talk to an attorney today.': { size: ['Business matter', 'Family matter', 'Contract issue'], budget: ['First time', 'Yes, before'] },
+  "Let's find your next move.": { size: ['Buy', 'Sell', 'Both'], budget: ['Under $400k', '$400k–$800k', '$800k+'] },
+  'Make your event easy.': { size: ['20 guests', '50 guests', '100+ guests'], budget: ['$15 per person', '$25 per person', 'Not sure'] },
+  'Start your transformation.': { size: ['Lose weight', 'Build muscle', 'Feel better'], budget: ['$100/month', '$200/month', '$300+/month'] },
+  'A spotless space, on schedule.': { size: ['2 bedrooms', '3 bedrooms', 'Office space'], budget: ['One-time', 'Weekly', 'Monthly'] },
+  "Let's get you on the road.": { size: ['A used SUV', 'A new sedan', 'A truck'], budget: ['Under $20k', '$300/month', 'Not sure'] },
+  "Let's see what we can do for you.": { size: ['Just me', '5–20 people', '50+ people'], budget: ['Under $5k', '$5k–$20k', '$20k+'] },
+  "Let's get you a quote.": { size: ['Small job', 'Medium project', 'Big project'], budget: ['Under $1k', '$1k–$5k', '$5k+'] },
+};
+
+const RX = {
+  stop: /\b(stop|unsubscribe|leave me alone|not interested|no thanks|no thank you|wrong number|don'?t (text|contact) me)\b/i,
+  reopen: /\b(actually|changed my mind|i'?m interested|still interested|let'?s talk|let'?s do it)\b/i,
+  bot: /\b(are|r) (you|u) (a |an )?(bot|ai|robot|real|human|person)\b|\bis this (a )?(bot|ai|automated|real person|robot)\b|\b(talking|texting|chatting) (to|with) a (bot|robot|machine|person|human)\b/i,
+  human: /\b(talk|speak) (to|with) (a |an )?(human|person|someone|manager|owner|real person)\b|\bcall me\b|\bphone call\b|\bcan (someone|you) call\b/i,
+  looking: /\b(just looking|just browsing|maybe later|not sure yet|thinking about it|just curious|comparing|for now)\b/i,
+  price: /\b(how much|price|pricing|prices|cost|costs|expensive|cheap|rates?|quote|fees?|charge)\b/i,
+  discount: /\b(discount|deal|promo|coupon|cheaper|best price|negotiat|special offer)\b/i,
+  financing: /\b(financ\w*|payment plans?|monthly payments?|installments?|pay over time|pay later)\b/i,
+  insurance: /\binsurance\b/i,
+  trust: /\b(guarantee|warranty|reviews?|references?|licensed|insured|certified|how long have you|experience|portfolio|examples)\b/i,
+  competitor: /\b(other (quotes?|companies|options)|competitors?|someone else|another company|cheaper elsewhere|shopping around)\b/i,
+  location: /\b(where are you|where('?s| is) your|location|address|located|near me|do you (come|travel|serve|cover)|service area|come to me)\b/i,
+  hours: /\b(your hours|opening hours|business hours|are you open|when (are|do) you (open|close)|open on (weekends?|saturdays?|sundays?))\b/i,
+  services: /\b(what (do|else do) you (offer|do|provide|sell)|what services|which services|what kind of (services|work))\b/i,
+  email: /\b(e-?mail)\b/i,
+  angry: /\b(scam|spam|annoying|wtf|stupid|useless|ridiculous)\b/i,
+  thanks: /\b(thanks|thank you|thx|ty|merci|appreciate it)\b/i,
+  greet: /^\s*(hi|hello|hey|yo|hiya|bonjour|hola|good (morning|afternoon|evening))\b[\s!.,]*$/i,
+  cancel: /\bcancel\b/i,
+  reschedule: /\b(reschedule|change (the )?time|another time|different time|other time|move (it|the call|the appointment)|something else|neither|none of (those|these)|doesn'?t work|can'?t (do|make) (that|those|it))\b/i,
+  no: /^\s*(no|nope|nah|not really)\b/i,
+  urgent: /\b(asap|urgent(ly)?|emergency|immediately|right away|today|tonight|tomorrow|this week|leak(ing)?)\b/i,
+  timeline: /\b(asap|urgent(ly)?|emergency|immediately|right away|today|tonight|tomorrow|this (week|weekend|month)|next (week|weekend|month|year|spring|summer)|in (a|an|one|two|three|four|a few|few|\d+) (days?|weeks?|months?)|within (a|an|one|two|three|\d+|the next( \w+)?) (days?|weeks?|months?)|\d+\s*(days?|weeks?|months?)|soon|(january|february|march|april|may|june|july|august|september|october|november|december)|spring|summer|fall|autumn|winter|no rush|flexible|whenever)\b/i,
+  budget: /(\$|€|£)\s?\d[\d,.]*\s?(k|m)?(\s?[-–]\s?(\$|€|£)?\s?\d[\d,.]*\s?(k|m)?)?\+?(\s?(\/|per)\s?(month|mo|person|guest|hour|week|year))?|\b\d[\d,.]*\s?(k|grand|dollars|usd|euros?|eur|bucks)\b|\b(around|about|under|max|up to)\s\$?\d[\d,.]*\b|\b(insurance|paying directly|one-time|weekly|monthly|full package|a few lessons|first time|yes, before|not sure( yet)?)\b/i,
+  size: /\b\d[\d,.]*\s?\+?\s?-?\s?(people|persons|guests|pax|employees|staff|users|seats|rooms?|bedrooms?|bathrooms?|beds?|baths?|sq\.?\s?ft|square (feet|foot|meters)|m2|sqm|stor(y|ies)|floors?|units?|locations?|stores?|kids|children|students|cars?|vehicles?|homes?|houses?|pages?|sessions?|lessons?)\b|\b(small|medium|large|big|huge|whole|entire|full|single|one|two|three|old|new|used)\s+(house|home|apartment|condo|office|team|room|kitchen|bathroom|roof|building|project|job|company|business|family|suv|sedan|truck|car)\b|\b(buy|sell|both|just me|me \+ family|myself|for me|my (son|daughter|kid|wife|husband|partner|mom|dad)|lose weight|build muscle|feel better|business matter|family matter|contract issue|office space)\b/i,
+  yes: /\b(yes|yeah|yep|yup|sure|ok(ay)?|works|perfect|sounds good|great|deal|let'?s do it|book (it|me)|either|any ?time|fine)\b/i,
+  dayOnly: /\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|tomorrow|today|next week)\b/i,
+  time: /\b(\d{1,2})(?::(\d{2}))?\s?(am|pm)\b|\bat (\d{1,2})(?::(\d{2}))?\b|\b(noon|midday|lunch ?time|evening|end of (the )?day)\b/i,
+};
+
+function nextSlots() {
+  const d = new Date(); d.setDate(d.getDate() + 1);
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+  const tmr = new Date(Date.now() + 864e5);
+  const day = d.toDateString() === tmr.toDateString() ? 'Tomorrow' : d.toLocaleDateString('en-US', { weekday: 'long' });
+  return { day, a: `${day} at 10:15 AM`, b: `${day} at 2:30 PM`, both: `${day.toLowerCase()} at 10:15 AM or 2:30 PM` };
+}
+
+function parseMoney(s) {
+  const m = String(s).match(/(\d[\d,.]*)\s?(k|grand|m)?/i);
+  if (!m) return 0;
+  let n = parseFloat(m[1].replace(/,/g, ''));
+  if (/k|grand/i.test(m[2] || '')) n *= 1000;
+  if (/^m$/i.test(m[2] || '')) n *= 1e6;
+  if (/(per|\/)\s?(person|guest)/i.test(s)) n *= 40;
+  if (/(per|\/)\s?(month|mo)/i.test(s)) n *= 12;
+  return n >= 50 ? n : 0;
+}
+const firstSentence = (s) => { const t = String(s).split(/(?<=[.!?])\s/)[0].replace(/^(hi|hello|hey|bonjour)[,!.\s]+/i, ''); return t.length > 60 ? t.slice(0, 58).replace(/\s+\S*$/, '') + '…' : t; };
+const clipPhrase = (s, n = 40) => { s = String(s).trim().replace(/[.!?]+$/, ''); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s; };
+
+function extract(text, c) {
+  const got = [];
+  const t = text.match(RX.timeline); if (t) { c.timeline = clipPhrase(t[0]); got.push('timeline'); }
+  const b = text.match(RX.budget); if (b) { c.budget = clipPhrase(b[0]); got.push('budget'); }
+  const z = text.match(RX.size); if (z) { c.size_or_scope = clipPhrase(z[0]); got.push('size_or_scope'); }
+  return got;
+}
+
+// Turns "friday 4pm", "at 3", "tomorrow at noon" into a slot label. Returns null if no day/time found.
+function parseSlot(text, E) {
+  const d = text.match(RX.dayOnly), t = text.match(RX.time);
+  if (!d && !t) return null;
+  let day = d ? cap(d[1].toLowerCase()) : E.slots.day;
+  if (/next week/i.test(day)) day = 'Next Monday';
+  let time = '10:15 AM';
+  if (t) {
+    if (t[6]) time = /evening|end of/i.test(t[6]) ? '5:00 PM' : '12:00 PM';
+    else {
+      let h = parseInt(t[1] || t[4], 10); const m = t[2] || t[5] || '00'; let ap = (t[3] || '').toUpperCase();
+      if (!ap) ap = h >= 8 && h <= 11 ? 'AM' : 'PM';
+      if (h > 12) { h -= 12; ap = 'PM'; }
+      time = `${h}:${m} ${ap}`;
+    }
+  }
+  return { slot: `${day} at ${time}`, guessedTime: !t };
+}
+
+function scriptTurn() {
+  const p = st.profile, lead = st.lead;
+  const E = (st.engine ||= { offered: false, asking: null, slots: nextSlots(), awaitTime: false, nudges: 0, said: {} });
+  const c = { ...st.crm };
+  const handoff = p.handoff_name.split(',')[0];
+  const custMsgs = st.history.filter((m) => m.role === 'customer');
+  const first = !custMsgs.length;
+  const text = first ? lead.message : custMsgs[custMsgs.length - 1].text;
+  const parts = [];
+  const acts = [];
+  const once = (key, line) => { if (!E.said[key]) { E.said[key] = 1; parts.push(line); } else parts.push(line.replace(/^(Great question!|Good question!) /, '')); };
+
+  if (first) {
+    Object.assign(c, { stage: 'engaged', need: firstSentence(lead.message), timeline: '', size_or_scope: '', budget: '', priority: 'warm', est_value: 0,
+      location: p.locations.find((l) => text.toLowerCase().includes(l.split('·').pop().trim().toLowerCase())) || p.locations[0], next_step: 'Qualify', booked_slot: '' });
+    parts.push(`Hi ${lead.name.split(' ')[0]}! 👋 This is ${p.agent_name} from ${p.business}. Thanks for reaching out, happy to help.`);
+    acts.push('Replied to new lead');
+  }
+
+  // ---- Lost: only re-open if they come back
+  if (!first && c.stage === 'lost') {
+    if (RX.reopen.test(text) || RX.yes.test(text) || RX.price.test(text)) {
+      c.stage = E.offered ? 'qualified' : 'engaged'; c.priority = 'warm';
+      parts.push(`Great to hear from you again! ${E.offered ? `Would ${E.slots.both} work for a ${p.booking_type}?` : p.q[['timeline', 'size_or_scope', 'budget'].find((k) => !c[k]) || 'timeline']}`);
+      return done(c, parts, ['Lead re-engaged']);
+    }
+    return done(c, ["Understood. I'm here if you ever need us. Just text back anytime!"], ['Lead still opted out']);
+  }
+  if (!first && RX.stop.test(text) && !RX.reopen.test(text)) {
+    Object.assign(c, { stage: 'lost', priority: 'cold', next_step: 'None' });
+    return done(c, [pick(["Totally understand, I won't bother you. If anything changes, just text back here. Have a great day!", 'No problem at all. If you ever need us, just reply here. Take care!'])], ['Lead opted out, marked lost']);
+  }
+
+  // ---- Extract details
+  const got = extract(text, c);
+  const isQuestion = [RX.bot, RX.human, RX.price, RX.discount, RX.financing, RX.insurance, RX.trust, RX.competitor, RX.location, RX.hours, RX.services, RX.email, RX.thanks, RX.greet, RX.angry, RX.looking].some((r) => r.test(text));
+  const gibberish = !/[aeiouy0-9]/i.test(text) || /(.)\1{3,}/.test(text) || (/^\S+$/.test(text.trim()) && !/\d/.test(text) && text.trim().length <= 5);
+  if (!first && E.asking && !got.length && !isQuestion && !E.offered && !gibberish && !RX.no.test(text)) {
+    c[E.asking] = clipPhrase(text); got.push(E.asking);
+  }
+  if (got.length && !first) acts.push(`Captured ${got.map((g) => ({ timeline: 'timeline', budget: 'budget', size_or_scope: 'size' }[g])).join(' & ')}`);
+
+  // ---- Answer what they asked
+  if (!first && RX.angry.test(text)) { parts.push(`Sorry for the trouble! I'm just here to get you a fast answer. If you'd rather, ${handoff} can call you directly.`); acts.push('De-escalated'); }
+  if (!first && RX.greet.test(text)) parts.push('Hi again! 😊');
+  if (!first && RX.thanks.test(text) && c.stage !== 'booked') parts.push(pick(["You're welcome!", 'Anytime!']));
+  if (RX.bot.test(text)) { once('bot', `Good question! I'm ${p.business}'s AI assistant, here 24/7 so nobody waits. ${handoff}, a real person, takes over on the call.`); acts.push('Answered "is this a bot?"'); }
+  if (RX.services.test(text)) { parts.push(`We do ${p.services.slice(0, -1).join(', ').toLowerCase()} and ${p.services.slice(-1)[0].toLowerCase()}.`); acts.push('Explained services'); }
+  if (RX.price.test(text)) {
+    const lo = Math.round(p.avg_deal_value * 0.5 / 50) * 50, hi = Math.round(p.avg_deal_value * 1.5 / 50) * 50;
+    once('price', `On price: most clients invest between $${lo.toLocaleString('en-US')} and $${hi.toLocaleString('en-US')} ${p.deal_unit}, depending on the details. ${handoff} confirms the exact number.`);
+    acts.push('Answered pricing');
+  }
+  if (RX.discount.test(text)) { parts.push(`We often have offers running. ${handoff} will check what you qualify for.`); acts.push('Handled discount ask'); }
+  if (RX.financing.test(text)) { parts.push(`Yes, flexible payment options are available. ${handoff} can walk you through them.`); acts.push('Answered financing'); }
+  if (RX.insurance.test(text) && !/insurance/i.test(c.budget || '') ) { parts.push(`We work with most major providers, and ${handoff} can verify yours.`); }
+  if (RX.trust.test(text)) { parts.push(`Great question. We stand behind our work, and ${handoff} can share references and details.`); acts.push('Answered trust question'); }
+  if (RX.competitor.test(text)) { parts.push(`Smart to compare! A quick chat with ${handoff} makes comparing easy, no obligation.`); acts.push('Handled competitor objection'); }
+  if (RX.location.test(text)) { parts.push(`We're based in ${p.city || 'the area'} and our ${c.location.split('·').pop().trim()} team covers you.`); acts.push('Answered location'); }
+  if (RX.hours.test(text)) { parts.push("We're open Monday to Saturday, and I answer texts 24/7."); acts.push('Answered hours'); }
+  if (RX.email.test(text)) parts.push("Sure, you'll get an email confirmation too.");
+  if (!first && RX.looking.test(text)) {
+    parts.push(pick(['No pressure at all!', 'Totally fine, no pressure.']) + ' A quick chat usually saves a lot of research time.');
+    if (c.priority !== 'hot') c.priority = 'cold';
+    acts.push('Handled "just looking"');
+  }
+  const wantsHuman = RX.human.test(text);
+  if (wantsHuman) { parts.push(`Absolutely, ${handoff} will call you.`); acts.push('Lead asked for a person'); }
+
+  // ---- Priority + value
+  if (RX.urgent.test(text) || (c.budget && parseMoney(c.budget))) c.priority = 'hot';
+  const bv = parseMoney(c.budget);
+  if (bv) c.est_value = bv;
+
+  // ---- Booked: reschedule / cancel / small talk
+  if (c.stage === 'booked') {
+    if (RX.cancel.test(text)) {
+      Object.assign(c, { stage: 'qualified', booked_slot: '', next_step: `Rebook ${p.booking_type}` });
+      E.awaitTime = true;
+      parts.push('No problem, I cancelled it. Want to pick another time? Just tell me a day and time.');
+      return done(c, parts, ['Booking cancelled']);
+    }
+    const ns = parseSlot(text, E);
+    if (ns || RX.reschedule.test(text) || E.awaitTime) {
+      if (ns) {
+        c.booked_slot = ns.slot; E.awaitTime = false;
+        parts.push(`Done ✅ moved to ${ns.slot}${ns.guessedTime ? ' (tell me if another time is better)' : ''}. Updated invite on its way.`);
+        return done(c, parts, [`Rescheduled to ${ns.slot}`]);
+      }
+      E.awaitTime = true;
+      parts.push('Of course! What day and time work better for you?');
+      return done(c, parts, ['Lead wants to reschedule']);
+    }
+    if (!parts.length || (parts.length === 1 && RX.thanks.test(text))) {
+      parts.length = 0;
+      parts.push(RX.thanks.test(text) ? pick([`My pleasure! See you ${c.booked_slot.replace(' at ', ' at ').replace(/^Tomorrow/, 'tomorrow')}. 🙌`, `Anytime! ${handoff} is looking forward to it.`])
+        : pick([`Got it, I've added that to your file for ${handoff}.`, `Noted, ${handoff} will have that ready for the call.`]));
+      acts.push('Added a note for the call');
+    }
+    return done(c, parts, acts);
+  }
+
+  // ---- Booking flow
+  const order = ['timeline', 'size_or_scope', 'budget'];
+  const missing = order.filter((k) => !c[k]);
+  const filled = order.length - missing.length;
+
+  const offer = (lead_in) => {
+    E.offered = true; E.asking = null;
+    Object.assign(c, { stage: 'qualified', next_step: `Book ${p.booking_type}` });
+    if (!c.est_value) c.est_value = p.avg_deal_value;
+    if (c.priority === 'warm' && filled >= 2) c.priority = 'hot';
+    parts.push(`${lead_in}Does ${E.slots.both} work better?`);
+    acts.push('Lead qualified, offered two times');
+  };
+  const book = (slot, guessed) => {
+    Object.assign(c, { stage: 'booked', booked_slot: slot, next_step: `${cap(p.booking_type)} with ${handoff}`, priority: 'hot' });
+    if (!c.est_value) c.est_value = p.avg_deal_value;
+    E.awaitTime = false;
+    parts.push(`You're booked ✅ ${slot} with ${handoff}${guessed ? ' (tell me if another time is better)' : ''}. A calendar invite is on its way. Anything I should pass along before then?`);
+    acts.push(`Booked the ${p.booking_type}: ${slot}`);
+  };
+
+  if (E.offered) {
+    let slot = null, guessed = false;
+    if (/\b2:30\b|\b2\s?pm\b|afternoon|\bsecond\b|\b2nd\b|latter/i.test(text)) slot = E.slots.b;
+    else if (/\b10(:15)?\b|morning|\bfirst\b|\b1st\b|former|earlier/i.test(text)) slot = E.slots.a;
+    else { const ns = parseSlot(text, E); if (ns) { slot = ns.slot; guessed = ns.guessedTime; } }
+    if (!slot && !E.awaitTime && RX.yes.test(text) && !RX.reschedule.test(text) && !isQuestion) slot = E.slots.a;
+    if (slot) book(slot, guessed);
+    else if (RX.reschedule.test(text) || RX.no.test(text) || /another time/i.test(text)) { E.awaitTime = true; parts.push('No problem! What day and time work best for you?'); acts.push('Lead asked for another time'); }
+    else if (E.awaitTime) { parts.push(pick(['Which day and time suit you best? For example "Thursday at 3pm".', 'Just tell me a day and time, like "Friday 11am", and I\'ll lock it in.'])); }
+    else {
+      E.nudges++;
+      if (got.length && !parts.length) parts.push(pick(['Thanks, noted for the call.', 'Great, I added that to your file.']));
+      parts.push(E.nudges > 2 ? "No rush! Just reply with a time that works and I'll lock it in." : `Does ${E.slots.both} work better? Or tell me a time that suits you.`);
+      if (!acts.length) acts.push('Followed up on the booking');
+    }
+    return done(c, parts, acts);
+  }
+
+  // Ready to offer? (enough info, they asked for a person, or it's been a few messages)
+  const ack = first ? (got.length && !E.said.price ? pick(['Got all that, thanks.', 'Thanks for the details.']) : '')
+    : got.includes('timeline') ? pick([`Got it, ${c.timeline.toLowerCase()} works.`, `Perfect, ${c.timeline.toLowerCase()} is doable.`])
+    : got.includes('budget') ? pick(['Thanks, that helps a lot.', 'Great, that gives me a good idea.'])
+    : got.includes('size_or_scope') ? pick(['Perfect, noted.', 'Great, thanks for the details.'])
+    : '';
+  if (ack) parts.push(ack);
+  if (wantsHuman || ((filled >= 2 || custMsgs.length >= 3) && !E.offered)) {
+    offer(wantsHuman ? '' : `Sounds like a great fit. ${handoff} can walk you through everything on a ${p.booking_type}. `);
+    return done(c, parts, acts);
+  }
+  const next = missing[0];
+  if (!first && !got.length && !isQuestion && E.asking === next) parts.push(gibberish ? "Sorry, I didn't quite catch that." : pick(['Got it.', 'Thanks!']));
+  E.asking = next;
+  parts.push(p.q[next]);
+  if (!acts.length) acts.push('Asked a qualifying question');
+  return done(c, parts, acts);
+}
+
+function done(c, parts, acts) {
+  c.summary = [`${st.lead.name}: ${c.need}`, c.timeline, c.size_or_scope, c.budget].filter(Boolean).join(' · ');
+  return { sms: parts.join(' ').replace(/\s+/g, ' ').trim(), crm: c, activity: acts.join(' · ') };
+}
+
+// Tap-to-reply suggestions for the current moment of the conversation
+function suggestions() {
+  const E = st.engine || {}, c = st.crm, ch = st.profile.chips;
+  if (c.stage === 'lost') return ["Actually, I'm interested"];
+  if (c.stage === 'booked') return E.awaitTime ? ['Friday at 11am', 'Next week', 'Monday 4pm'] : ['Thanks!', 'Can we reschedule?', 'Where are you located?'];
+  if (E.offered) return E.awaitTime ? ['Friday at 11am', 'Thursday 3pm', 'Next week'] : [E.slots.a.replace(/^\w+ at /, ''), E.slots.b.replace(/^\w+ at /, ''), 'Another time', 'Is this a bot?'];
+  const base = E.asking === 'timeline' ? ['ASAP', 'Within 2 weeks', 'Next month', 'Just looking']
+    : E.asking === 'size_or_scope' ? ch.size : E.asking === 'budget' ? ch.budget : [];
+  const extra = [];
+  if (!E.said?.price) extra.push('How much does it cost?');
+  if (!E.said?.bot) extra.push('Is this a bot?');
+  return [...base, ...extra].slice(0, 5);
+}
+
+/* ---------- intro ---------- */
+$('#introForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const v = Object.fromEntries(new FormData(e.target));
+  Object.keys(v).forEach((k) => (v[k] = String(v[k]).trim()));
+  const err = $('#introErr');
+  if (!v.name || !v.business || !v.offer) return (err.textContent = 'Please fill in your name, business and what you sell.');
+  err.textContent = '';
+  if (v.website) return; // bot
+  st.visitor = v;
+  $('#introBtn').disabled = true;
+  show('s-build');
+  const anim = buildAnim();
+  try {
+    st.profile = buildProfile(v);
+    await anim;
+    setupApp();
+    show('s-app');
+  } catch (ex) {
+    show('s-intro');
+    err.textContent = ex.message || 'Something went wrong. Please try again.';
+  } finally { $('#introBtn').disabled = false; }
+});
+
+async function buildAnim() {
+  const rows = $$('.bs');
+  rows.forEach((r) => { r.classList.remove('on', 'done'); r.querySelector('i').textContent = '○'; });
+  for (const r of rows) {
+    r.classList.add('on'); r.querySelector('i').textContent = '◐';
+    await wait(850);
+    r.classList.remove('on'); r.classList.add('done'); r.querySelector('i').textContent = '✓';
+  }
+}
+
+/* ---------- app setup ---------- */
+const QKEYS = [['need', 'Need'], ['timeline', 'Timeline'], ['size_or_scope', 'Size / scope'], ['budget', 'Budget'], ['priority', 'Priority'], ['est_value', 'Est. value']];
+
+function setupApp() {
+  const p = st.profile;
+  document.documentElement.style.setProperty('--brand', p.brand_color);
+  const letter = (p.business.trim()[0] || 'B').toUpperCase();
+  const slug = p.business.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 24) || 'yourbusiness';
+  $('#url').textContent = `🔒 www.${slug}.com/contact`;
+  $('#sLetter').textContent = letter; $('#pLetter').textContent = letter;
+  $('#sName').textContent = p.business; $('#pName').textContent = p.business;
+  $('#sKick').textContent = p.tagline; $('#sTitle').textContent = p.hero_title; $('#sSub').textContent = p.hero_sub;
+  $('#sSvcs').innerHTML = p.services.map((s) => `<span>${esc(s)}</span>`).join('');
+  $('#cMsg').placeholder = p.inquiry_placeholder;
+  $('#appSub').textContent = `AI agent for ${p.business}`;
+  $('#dSub').textContent = `${p.business}${p.city ? ' · ' + p.city : ''}`;
+  $('#qrows').innerHTML = QKEYS.map(([k, l]) => `<div class="q" data-k="${k}"><span class="k">${l}</span><span class="v">—</span><span class="c">✓</span></div>`).join('');
+  $('#locs').innerHTML = p.locations.map((l) => `<div class="loc"><span class="pin"></span><span class="ln">${esc(l)}</span><span class="tg">ASSIGNED</span></div>`).join('');
+  resetConversation();
+}
+
+function resetConversation() {
+  Object.assign(st, { engine: null, lead: null, history: [], crm: {}, submitAt: 0, firstMs: null, busy: false, ended: false, custCount: 0 });
+  $('#custForm').reset(); $('#cBtn').disabled = false; $('#cBtn').textContent = 'Send request'; $('#cOk').classList.remove('show');
+  ['#cName', '#cPhone', '#cMsg'].forEach((s) => ($(s).disabled = false));
+  $('#msgs').innerHTML = '<div class="empty" id="msgEmpty">Send a request from the website form.<br>The AI will text you back here.</div>';
+  $('#cin').value = ''; lockCompose(true); $('#leftCount').textContent = ''; $('#qr').innerHTML = '';
+  $('#respT').textContent = '—'; $('#respChip').classList.remove('done');
+  $$('#qrows .q').forEach((q) => { q.classList.remove('has'); q.querySelector('.v').textContent = '—'; });
+  $('#qCount').textContent = '0/6';
+  $$('#locs .loc').forEach((l) => l.classList.remove('win')); $('#locs').classList.remove('routed');
+  ['#col-new', '#col-qual', '#col-book'].forEach((s) => ($(s).innerHTML = ''));
+  $('#log').innerHTML = '<div class="lwait">Waiting for the first lead…</div>';
+  $('#toast').classList.remove('show');
+  $('#mstat').innerHTML = '<span>CRM: waiting for lead</span>';
+  $('#end').classList.remove('show');
+  setGuide(`You're the customer now. Send <b>${esc(st.profile.business)}</b> a request through their website, like a real prospect would.`);
+  setTab('web');
+}
+
+function setGuide(html) { $('#guideText').innerHTML = html; }
+function setTab(t) {
+  st.tab = t;
+  $$('#tabs button').forEach((b) => { const on = b.dataset.tab === t; b.classList.toggle('on', on); if (on) b.classList.remove('ping'); });
+  $$('.panel').forEach((p) => p.classList.toggle('act', p.id === 'p-' + t));
+}
+function ping(t) { if (isMobile() && st.tab !== t) $(`#tabs button[data-tab="${t}"]`).classList.add('ping'); }
+$('#tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setTab(b.dataset.tab); });
+
+function log(icon, text) {
+  const L = $('#log'); L.querySelector('.lwait')?.remove();
+  const e = document.createElement('div'); e.className = 'le';
+  e.innerHTML = `<span class="t">${esc(timeNow())}</span><span>${icon}</span><span class="x">${esc(text)}</span>`;
+  L.prepend(e); reveal(e);
+  while (L.children.length > 6) L.lastChild.remove();
+  ping('dash');
+}
+
+/* ---------- customer form ---------- */
+$('#exBtn').addEventListener('click', () => {
+  if ($('#cBtn').disabled) return;
+  if (!$('#cName').value) $('#cName').value = st.visitor?.name ? `${st.visitor.name} (test)` : 'Sarah Mitchell';
+  if (!$('#cPhone').value) $('#cPhone').value = '(555) 010-0148';
+  $('#cMsg').value = st.profile.sample_inquiry;
+});
+
+$('#custForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = $('#cName').value.trim(), phone = $('#cPhone').value.trim(), message = $('#cMsg').value.trim();
+  if (!name || !message) { setGuide('Add a name and a message, or tap <b>✨ Fill with an example request</b>.'); return; }
+  st.lead = { name, phone, message };
+  $('#cBtn').disabled = true; $('#cBtn').textContent = '✓ Request sent'; $('#cOk').classList.add('show');
+  ['#cName', '#cPhone', '#cMsg'].forEach((s) => ($(s).disabled = true));
+  st.submitAt = performance.now();
+  log('⚡', `New web lead: ${name}`);
+  const card = document.createElement('div'); card.className = 'lc'; card.id = 'leadCard';
+  card.innerHTML = `<div class="lt"></div><div class="lm"></div><div class="lf"><span class="val" id="lcVal">—</span><span class="tag" id="lcTag">Scoring…</span></div>`;
+  card.querySelector('.lt').textContent = name; card.querySelector('.lm').textContent = message;
+  $('#col-new').appendChild(card);
+  setGuide(`Watch the AI text you back. Then <b>reply like a real customer</b>: share your timeline, ask about price.`);
+  if (isMobile()) { await wait(500); setTab('chat'); }
+  await agentTurn();
+});
+
+/* ---------- chat ---------- */
+function renderQuick() {
+  const box = $('#qr'); box.innerHTML = '';
+  if (st.busy || !st.lead || st.custCount >= CONFIG.maxCustomerMsgs) return;
+  for (const s of suggestions()) {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = s;
+    b.addEventListener('click', () => { if (st.busy) return; $('#cin').value = s; sendCustomer(); });
+    box.appendChild(b);
+  }
+}
+function calcRoi() {
+  const n = (id) => Math.max(0, Number($(id).value) || 0);
+  const month = n('#rLeads') * n('#rPct') / 100 * n('#rVal');
+  $('#rMonth').textContent = money(month) || '$0';
+  $('#rYear').textContent = money(month * 12) || '$0';
+}
+['#rLeads', '#rPct', '#rVal'].forEach((id) => $(id).addEventListener('input', calcRoi));
+function lockCompose(lock) { $('#cin').disabled = lock; $('#sendBtn').disabled = lock; if (!lock && !isMobile()) $('#cin').focus(); }
+function scrollMsgs() { const m = $('#msgs'); m.scrollTo({ top: m.scrollHeight, behavior: 'smooth' }); }
+function bubble(cls, text) {
+  $('#msgEmpty')?.remove();
+  const b = document.createElement('div'); b.className = 'b ' + cls; b.textContent = text;
+  $('#msgs').appendChild(b); reveal(b); scrollMsgs(); return b;
+}
+
+async function agentTurn() {
+  st.busy = true; lockCompose(true); $('#qr').innerHTML = '';
+  $('#msgEmpty')?.remove();
+  const rc = $('#msgs .rcpt'); if (rc) setTimeout(() => (rc.textContent = 'Read'), 400);
+  if (!st.history.length) { const s = document.createElement('div'); s.className = 'stamp'; s.textContent = `Text Message · Today ${timeNow()}`; $('#msgs').appendChild(s); }
+  const typing = document.createElement('div'); typing.className = 'b left typing'; typing.innerHTML = '<i></i><i></i><i></i>';
+  $('#msgs').appendChild(typing); reveal(typing); scrollMsgs();
+  const t0 = performance.now();
+  try {
+    const r = scriptTurn();
+    await wait(st.history.length ? 1100 + Math.random() * 900 : 1200 + Math.random() * 600); // natural typing delay
+    if (st.firstMs === null) st.firstMs = performance.now() - st.submitAt; // time until the text appears
+    typing.remove();
+    bubble('left', r.sms);
+    st.history.push({ role: 'agent', text: r.sms });
+    ping('chat');
+    if (st.history.length === 1) {
+      $('#respT').textContent = fmtSec(st.firstMs); $('#respChip').classList.add('done');
+      log('💬', `AI texted the lead back in ${fmtSec(st.firstMs)}`);
+    } else if (r.activity) log('🤖', r.activity);
+    applyCrm(r.crm || {});
+  } catch (ex) {
+    typing.remove();
+    bubble('sys', `⚠️ ${ex.message || 'The AI is unavailable.'} Tap send to try again.`);
+    st.retry = true;
+  }
+  st.busy = false;
+  const left = CONFIG.maxCustomerMsgs - st.custCount;
+  $('#leftCount').textContent = left <= 4 ? `${Math.max(0, left)} replies left in this demo` : '';
+  if (left > 0) lockCompose(false);
+  renderQuick();
+  if (!st.ended && st.crm.stage === 'booked') finish('booked');
+  else if (!st.ended && left <= 0) finish('limit');
+}
+
+async function sendCustomer() {
+  if (st.busy) return;
+  const i = $('#cin'); const t = i.value.trim();
+  if (!t && st.retry) { st.retry = false; return agentTurn(); } // retry a failed AI turn
+  if (!t || st.custCount >= CONFIG.maxCustomerMsgs) return;
+  st.retry = false;
+  i.value = '';
+  $('#msgs .rcpt')?.remove();
+  bubble('right', t);
+  const rc = document.createElement('div'); rc.className = 'rcpt'; rc.textContent = 'Delivered'; $('#msgs').appendChild(rc);
+  st.history.push({ role: 'customer', text: t });
+  st.custCount++;
+  await agentTurn();
+}
+$('#sendBtn').addEventListener('click', sendCustomer);
+$('#cin').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); sendCustomer(); } });
+
+/* ---------- CRM ---------- */
+function applyCrm(c) {
+  const prev = st.crm; st.crm = { ...prev, ...c };
+  let filled = 0;
+  for (const [k] of QKEYS) {
+    const row = $(`#qrows .q[data-k="${k}"]`);
+    let v = st.crm[k];
+    if (k === 'est_value') v = money(v);
+    if (k === 'priority') v = { hot: '🔥 Hot', warm: '🌤 Warm', cold: '🧊 Cold' }[v] || '';
+    v = String(v || '').trim();
+    if (v) filled++;
+    const vEl = row.querySelector('.v');
+    if (v && vEl.textContent !== v) { vEl.textContent = v; vEl.title = v; row.classList.add('has'); row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash'); }
+  }
+  $('#qCount').textContent = `${filled}/6`;
+
+  // routing
+  const locName = String(st.crm.location || '').toLowerCase();
+  if (locName) {
+    const rows = $$('#locs .loc');
+    let hit = rows.find((r) => r.querySelector('.ln').textContent.toLowerCase() === locName) || rows.find((r) => locName.includes(r.querySelector('.ln').textContent.toLowerCase()) || r.querySelector('.ln').textContent.toLowerCase().includes(locName));
+    if (hit && !hit.classList.contains('win')) {
+      rows.forEach((r) => r.classList.remove('win')); hit.classList.add('win'); $('#locs').classList.add('routed');
+      log('📍', `Routed to ${hit.querySelector('.ln').textContent}`);
+    }
+  }
+
+  // pipeline card
+  const card = $('#leadCard');
+  if (card) {
+    const target = st.crm.stage === 'booked' ? '#col-book' : st.crm.stage === 'qualified' ? '#col-qual' : '#col-new';
+    if (card.parentElement !== $(target)) {
+      $(target).appendChild(card); card.style.animation = 'none'; void card.offsetWidth; card.style.animation = '';
+      if (st.crm.stage === 'qualified') log('✅', `Lead qualified${money(st.crm.est_value) ? ' · est. ' + money(st.crm.est_value) : ''}`);
+    }
+    $('#lcVal').textContent = money(st.crm.est_value) || '—';
+    const tag = $('#lcTag');
+    if (st.crm.stage === 'booked') { tag.textContent = '📅 ' + (st.crm.booked_slot || 'Booked'); tag.className = 'tag gr'; }
+    else if (st.crm.stage === 'lost') { tag.textContent = 'Lost'; tag.className = 'tag'; }
+    else if (st.crm.priority === 'hot') { tag.textContent = '🔥 Hot'; tag.className = 'tag hot'; }
+    else if (st.crm.priority) { tag.textContent = st.crm.priority === 'warm' ? '🌤 Warm' : '🧊 Cold'; tag.className = 'tag'; }
+  }
+
+  // mobile status strip
+  const stageL = { new: 'New', engaged: 'Engaged', qualified: 'Qualified', booked: 'Booked', lost: 'Lost' }[st.crm.stage] || 'New';
+  const parts = [`<span class="${st.crm.stage === 'booked' || st.crm.stage === 'qualified' ? 'g' : ''}">CRM: ${stageL}</span>`];
+  if (st.crm.priority === 'hot') parts.push('<span class="h">🔥 Hot</span>');
+  if (money(st.crm.est_value)) parts.push(`<span>${money(st.crm.est_value)}</span>`);
+  parts.push(`<span>${filled}/6 details</span>`);
+  $('#mstat').innerHTML = parts.join('');
+
+  // booked
+  if (st.crm.stage === 'booked' && prev.stage !== 'booked') {
+    const p = st.profile;
+    log('📅', `Booked: ${st.crm.booked_slot || p.booking_type}`);
+    $('#toastH').textContent = `📲 Alert to ${p.handoff_name}`;
+    $('#toastB').innerHTML = `<b>New ${esc(p.booking_type)} booked</b> with ${esc(st.lead.name)}${st.crm.booked_slot ? ' · <b>' + esc(st.crm.booked_slot) + '</b>' : ''}.<br>${esc(st.crm.summary || '')}${money(st.crm.est_value) ? ' · est. <b>' + money(st.crm.est_value) + '</b>' : ''}`;
+    $('#toast').classList.add('show');
+    setGuide(`Booked. The AI just handed a qualified lead to <b>${esc(p.handoff_name)}</b>.`);
+  }
+}
+$('#toastX').addEventListener('click', () => $('#toast').classList.remove('show'));
+
+/* ---------- finish ---------- */
+async function finish(kind) {
+  st.ended = true;
+  await wait(kind === 'booked' ? 2800 : 1200);
+  const p = st.profile;
+  $('#eKick').textContent = kind === 'booked' ? 'Booked on autopilot' : 'Demo complete';
+  $('#eTitle').innerHTML = kind === 'booked'
+    ? `${esc(p.business)} just booked a qualified lead<br><span>without anyone lifting a finger.</span>`
+    : `That's the AI handling a real conversation.<br><span>Now picture it on every lead you get.</span>`;
+  $('#eResp').textContent = st.firstMs ? fmtSec(st.firstMs) : '—';
+  $('#eMsgs').textContent = st.history.filter((m) => m.role === 'agent').length;
+  $('#eFields').textContent = $('#qCount').textContent;
+  const mv = money(st.crm.est_value);
+  $('#eVal').textContent = mv || (st.crm.booked_slot || '—');
+  $('#eValL').textContent = mv ? 'est. deal value' : 'call booked';
+  $('#rVal').value = Math.round(st.crm.est_value || p.avg_deal_value); calcRoi();
+  $('#ePitch').innerHTML = `Want this answering every lead on <b>${esc(p.business)}</b>'s website, 24/7?<br>${esc(CONFIG.agency)} builds it into your site, CRM and calendar, powered by real AI.`;
+  $('#end').classList.add('show');
+}
+$('#eKeep').addEventListener('click', () => $('#end').classList.remove('show'));
+$('#eRestart').addEventListener('click', () => { $('#end').classList.remove('show'); show('s-intro'); });
+</script>
+</body>
+</html>
